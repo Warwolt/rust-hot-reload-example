@@ -5,9 +5,9 @@ mod hot_lib {
 }
 
 fn main() {
-    let mut state = hot_lib::State { counter: 0 };
+    let mut state = hot_lib::State::new();
     loop {
-        hot_lib::do_stuff(&mut state);
+        hot_lib::update(&mut state);
         std::thread::sleep(std::time::Duration::from_secs(1));
     }
 }
