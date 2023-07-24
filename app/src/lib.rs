@@ -16,6 +16,15 @@ pub fn init() -> State {
 }
 
 #[no_mangle]
+pub fn setup_logger(
+    logger: &'static dyn log::Log,
+    level: log::LevelFilter,
+) -> Result<(), log::SetLoggerError> {
+    log::set_max_level(level);
+    log::set_logger(logger)
+}
+
+#[no_mangle]
 pub fn update(state: &mut State) {
     state.counter += 1;
     state.printer.print_counter(state.counter);

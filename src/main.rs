@@ -4,6 +4,9 @@ use simple_logger::SimpleLogger;
 mod hot_app {
     pub struct State;
     hot_functions_from_file!("app/src/lib.rs");
+
+    #[lib_updated]
+    pub fn was_updated() -> bool {}
 }
 
 fn init_logging() {
@@ -16,9 +19,12 @@ fn init_logging() {
 fn main() {
     init_logging();
     log::info!("Program start");
-
     let mut state = hot_app::init();
     loop {
+        if hot_app::was_updated() {
+            hot_app::setup_logger(log::logger(), log::max_level()).unwrap();
+        }
+
         hot_app::update(&mut state);
         std::thread::sleep(std::time::Duration::from_secs(1));
     }

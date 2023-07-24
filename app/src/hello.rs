@@ -6,6 +6,8 @@ impl Printer {
     }
 
     pub fn print_counter(&self, counter: usize) {
-        println!("doing stuff in iteration {}", counter);
+        let s = format!("doing stuff in iteration {}", counter);
+        // println!("{}", s);
+        log::info!("{}", s);
     }
 }
