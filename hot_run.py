@@ -12,5 +12,10 @@ processes = [
     subprocess.Popen(["cargo", "run"]),
 ]
 
-for p in processes:
-    p.wait()
+while True:
+    for p in processes:
+        code = p.poll()
+        if code != None:
+            for p in processes:
+                p.kill()
+            sys.exit(code)
