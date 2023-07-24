@@ -7,6 +7,10 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-subprocess.run(["cargo", "build"])
-subprocess.Popen(["cargo", "watch", "-w", "lib", "-x", "build -p lib"])
-subprocess.run(["cargo", "run"])
+processes = [
+    subprocess.Popen(["cargo", "watch", "-w", "lib", "-x", "build -p lib"]),
+    subprocess.Popen(["cargo", "run"]),
+]
+
+for p in processes:
+    p.wait()

@@ -8,5 +8,12 @@ To run it:
 python hot_run.py
 ```
 
-This python script is a wrapper around `cargo run`, but also sets up a `cargo
+The python script is a wrapper around `cargo run`, but also sets up a `cargo
 watch` in the background that will rebuild the hot reloaded library when sources change.
+
+Or, in a unix like shell you can run:
+```
+(trap 'kill 0' SIGINT; cargo watch -w lib -x 'build -p lib' & cargo run)
+```
+
+Which will run the `watch` and the `run` in a background shell
