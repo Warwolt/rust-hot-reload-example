@@ -8,5 +8,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-hot-lib-reloader = "^0.6"
 app = { path = "app" }
+hot-lib-reloader = "^0.6"
+log = "0.4.19"
+simple_logger = "4.2.0"
