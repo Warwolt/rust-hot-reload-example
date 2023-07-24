@@ -1,6 +1,6 @@
-use hello::Printer;
-
 mod hello;
+
+use hello::Printer;
 
 pub struct State {
     pub counter: usize,

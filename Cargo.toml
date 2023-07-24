@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["lib"]
+members = ["app"]
 
 [package]
 name = "bin"
@@ -9,4 +9,4 @@ edition = "2021"
 
 [dependencies]
 hot-lib-reloader = "^0.6"
-lib = { path = "lib" }
+app = { path = "app" }

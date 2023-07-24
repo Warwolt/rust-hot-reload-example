@@ -8,7 +8,7 @@ def signal_handler(sig, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 processes = [
-    subprocess.Popen(["cargo", "watch", "-w", "lib", "-x", "build -p lib"]),
+    subprocess.Popen(["cargo", "watch", "-w", "app", "-x", "build -p app"]),
     subprocess.Popen(["cargo", "run"]),
 ]
 
