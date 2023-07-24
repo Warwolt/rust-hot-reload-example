@@ -7,12 +7,11 @@ pub struct State {
     printer: Printer,
 }
 
-impl State {
-    pub fn new() -> Self {
-        State {
-            counter: 0,
-            printer: Printer::new(),
-        }
+#[no_mangle]
+pub fn init() -> State {
+    State {
+        counter: 0,
+        printer: Printer::new(),
     }
 }
 

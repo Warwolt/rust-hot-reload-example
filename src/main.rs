@@ -2,7 +2,7 @@ use simple_logger::SimpleLogger;
 
 #[hot_lib_reloader::hot_module(dylib = "app")]
 mod hot_app {
-    pub use app::State;
+    pub struct State;
     hot_functions_from_file!("app/src/lib.rs");
 }
 
@@ -17,7 +17,7 @@ fn main() {
     init_logging();
     log::info!("Program start");
 
-    let mut state = hot_app::State::new();
+    let mut state = hot_app::init();
     loop {
         hot_app::update(&mut state);
         std::thread::sleep(std::time::Duration::from_secs(1));
