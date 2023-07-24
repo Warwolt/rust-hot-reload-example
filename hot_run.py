@@ -17,5 +17,5 @@ while True:
         code = p.poll()
         if code != None:
             for p in processes:
-                p.kill()
+                p.terminate()
             sys.exit(code)
